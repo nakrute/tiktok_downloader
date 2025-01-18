@@ -7,9 +7,9 @@ with open('# TODO', 'r') as f:
 video_list = [v["Link"] for v in data["Video"]["Videos"]["VideoList"]]
 output_folder = # TODO
 
-video_list = video_list[:2]
 for video_url in video_list:
     video_file_name = f"{output_folder}/{video_url[-27:]}.mp4"
+    print(f"Creating file {count}/{len(video_list)}")
     try:
         # Send a GET request to the URL
         response = requests.get(video_url, stream=True)
@@ -23,3 +23,4 @@ for video_url in video_list:
         print(f"Video downloaded successfully and saved as '{video_file_name}'")
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
+print("Done Downloading!")
